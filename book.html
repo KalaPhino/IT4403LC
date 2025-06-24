@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Book Display - Liam</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+    .book { background: #fff; padding: 20px; border-radius: 6px; max-width: 700px; margin: auto; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    img { float: right; margin-left: 20px; max-width: 150px; }
+    h1 { font-size: 1.8rem; }
+    p { line-height: 1.5; }
+    footer { text-align: center; font-size: .9rem; color: #777; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function() {
+      $.getJSON('google-books-book.json', function(data) {
+        const book = data.volumeInfo;
+        const html = `
+          <div class="book">
+            <img src="${book.imageLinks?.thumbnail || ''}" alt="Book Cover">
+            <h1>${book.title}</h1>
+            <h3>${book.subtitle || ''}</h3>
+            <p><strong>Author:</strong> ${book.authors?.join(', ')}</p>
+            <p><strong>Publisher:</strong> ${book.publisher} (${book.publishedDate})</p>
+            <p><strong>Pages:</strong> ${book.pageCount}</p>
+            <p><strong>Categories:</strong> ${book.categories?.join(', ')}</p>
+            <p><strong>Rating:</strong> ${book.averageRating || 'N/A'} (${book.ratingsCount || 0} reviews)</p>
+            <p><strong>Description:</strong><br>${book.description || 'No description available.'}</p>
+            <p><a href="${book.infoLink}" target="_blank">View on Google Books</a></p>
+          </div>
+        `;
+        $('body').append(html);
+      });
+    });
+  </script>
+</head>
+<body>
+        <style>
+        a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+    </style>
+    <a href="milestone1.html" class="previous">&laquo; Previous</a>
+    <footer>
+    Created by Liam Casimir
+  </footer>
+</body>
+</html>
