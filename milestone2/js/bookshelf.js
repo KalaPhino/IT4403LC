@@ -1,5 +1,5 @@
-const userId = "109136170470676921574";
-const shelfId = "1001";
+const userId = "109136170470676921574";             // My userID  (from URL on webpage)
+const shelfId = "1001";                             //my shelf ID (from URL on webpage)
 const url = `https://www.googleapis.com/books/v1/users/${userId}/bookshelves/${shelfId}/volumes`;
 
 $.getJSON(url, function(data) {
