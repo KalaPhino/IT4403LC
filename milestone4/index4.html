@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milestone 4 Book Explorer SPA</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>     <!-- jQuery for DOM manipulation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.js"></script>  <!-- Mustache.js for templating -->
+  <script src="js/script.js" defer></script>
+
+</head>
+<body>
+
+<nav>
+  <a href="../index.html">| Home Page |</a>
+</nav>
+
+
+
+  <header>
+    <h1>Book Explorer </h1>                 <!-- Main title of the application -->
+    <div class="view-toggle">
+      <button id="grid-view" class="toggle-btn active">Grid View</button>
+      <button id="list-view" class="toggle-btn">List View</button>
+    </div>
+  </header>
+
+  <section id="search-bar">      <!-- Search bar for book search functionality -->
+    <input type="text" id="search-input" placeholder="Search books..." />
+    <button id="search-btn">Search</button>
+  </section>
+
+  <section id="navigation-tabs">      <!-- Navigation tabs for results and bookshelf -->
+    <button id="results-tab" class="active-tab">Search Results</button>
+    <button id="shelf-tab">My Bookshelf</button>
+  </section>
+
+  <main id="main-content">        <!-- Main content area for displaying book results and details -->
+    <div id="results-container"></div>
+    <div id="shelf-container" style="display:none;"></div>
+    <div id="book-detail"></div>
+  </main>
+
+  <!-- Mustache Templates -->
+  <script id="book-card-template" type="x-tmpl-mustache">     // Template for rendering individual book cards
+    <div class="book-card" data-id="{{id}}">
+      <img src="{{thumbnail}}" alt="{{title}}" />
+      <h3>{{title}}</h3>
+      <p>{{authors}}</p>
+    </div>
+  </script>
+
+  <script id="book-detail-template" type="x-tmpl-mustache">      // Template for rendering book details
+    <div class="book-detail">
+      <h2>{{title}}</h2>
+      <p><strong>Authors:</strong> {{authors}}</p>
+      <p><strong>Publisher:</strong> {{publisher}}</p>
+      <p><strong>Published:</strong> {{publishedDate}}</p>
+      <p><strong>Pages:</strong> {{pageCount}}</p>
+      <p><strong>Categories:</strong> {{categories}}</p>
+      <p><strong>Description:</strong> {{description}}</p>
+      <a href="{{previewLink}}" target="_blank">Preview Book</a>
+    </div>
+  </script>
+
+  <script id="bookshelf-template" type="x-tmpl-mustache">      // Template for rendering bookshelf books
+    <div class="book-card">
+      <img src="{{thumbnail}}" alt="{{title}}" />
+      <h4>{{title}}</h4>
+      <p>{{authors}}</p>
+    </div>
+  </script>
+
+</body>
+</html>
